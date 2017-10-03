@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SquAIR Hockey</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+
+
+    <canvas id="myCanvas" width="1000" height="600">
+    </cavas>
+    <script>
+
+
+    c=document.getElementById('myCanvas')
+    cc=c.getContext('2d');
+    setInterval(update,1000/100);
+    var px = 750
+    var py = 300
+    var ox = 50
+    var oy = 50
+    var bx = 500
+    var by = 300
+    var byv = 0
+    var bxv = 4.24
+    var pscore=0
+    var oscore=0
+    function readMouseMove(e){
+
+      px =e.clientX;
+      py=e.clientY;
+
+    }
+      document.onmousemove = readMouseMove;
+
+    function update(){
+      cc.fillStyle='black'
+      cc.fillRect(0,0,c.width,c.height)
+
+      cc.fillStyle='white'
+      cc.fillRect(10,10,c.width-20,c.height-20)
+      cc.fillStyle="blue"
+      cc.fillRect(492,10,16,c.height-20)
+      cc.fillRect(412,212,176,176)
+
+      cc.fillStyle='white'
+      cc.fillRect(428,228,144,144)
+      cc.fillStyle="blue"
+      cc.fillRect(492,292,16,16)
+      cc.fillStyle='red'
+      cc.fillRect(bx,by,25,25)
+      by+=byv
+      bx+=bxv
+
+      cc.fillStyle='white'
+      cc.fillRect(0,200,10,200)
+      cc.fillRect(990,200,10,200)
+      cc.fillStyle='black'
+
+      cc.fillRect(ox-25,oy-25,50,50)
+
+      if(px<500){
+        cc.fillStyle='black'
+        cc.fillRect(500,py-25,50,50)
+
+      }
+      if(px>=500){
+        cc.fillStyle='black'
+        cc.fillRect(px-25,py-25,50,50)
+      }
+
+
+
+
+
+
+      if(by<=10){
+        byv=-byv
+      }
+      if(by>=565){
+        byv=-byv
+      }
+      if(bx<=10 && by>=375){
+
+
+        bxv=-bxv
+      }
+      if(bx<=10 && by<=200){
+
+
+        bxv=-bxv
+      }
+      if(bx>=965 && by>=375){
+
+
+        bxv=-bxv
+      }
+      if(bx>=965 && by<=200){
+
+
+        bxv=-bxv
+      }
+
+
+
+      if(by>=py-30 && by<=py+5 && bx>=px-50 && bx<=px-45){
+        bxv=-4.24
+        byv=0
+      }
+      if(by>=py-50 && by<=py-30 && bx>=px-50 && bx<=px-45){
+        bxv=-3
+        byv=-3
+      }
+      if(by>=py+5 && by<=py+25 && bx>=px-50 && bx<=px-45){
+        bxv=-3
+        byv=3
+      }
+
+      if(by>=py-50 && by<=py-45 && bx>=px-50 && bx<=px+25){
+        byv=-4.24
+        bxv=0
+      }
+      if(by>=py-50 && by<=py-45 && bx>=px-50 && bx<=px-30){
+        byv=-3
+        bxv=-3
+      }
+      if(by>=py-50 && by<=py-45 && bx>=px+5 && bx<=px+25){
+        byv=-3
+        bxv=3
+      }
+
+      if(by>=py+20 && by<=py+25 && bx>=px-50 && bx<=px+25){
+        byv=4.24
+        bxv=0
+      }
+      if(by>=py+20 && by<=py+25 && bx>=px-50 && bx<=px-30){
+        byv=3
+        bxv=-3
+      }
+      if(by>=py+20 && by<=py+25 && bx>=px+5 && bx<=px+25){
+        byv=3
+        bxv=3
+      }
+      if(by>=py-30 && by<=py+5 && bx>=px+20 && bx<=px+25){
+        bxv=4.24
+        byv=0
+      }
+      if(by>=py-50 && by<=py-30 && bx>=px+20 && bx<=px+25){
+        bxv=3
+        byv=-3
+      }
+      if(by>=py+5 && by<=py+25 && bx>=px+20 && bx<=px+25){
+        bxv=3
+        byv=3
+      }
+      if(ox<bx && ox<450 && ox>10){
+        ox+=2
+      }
+      if(ox>bx && ox<450 && ox>10){
+        ox-=2
+      }
+      if(oy<by && oy<550){
+        oy+=2
+      }
+      if(oy>by && oy>10){
+        oy-=2
+      }
+      if(bx>475 && ox>100){
+        ox-=2
+      }
+
+      if(by>=oy-30 && by<=oy+5 && bx>=ox-50 && bx<=ox-45){
+        bxv=-4.24
+        byv=0
+
+      }
+      if(by>=oy-50 && by<=oy-30 && bx>=ox-50 && bx<=ox-45){
+        bxv=-3
+        byv=-3
+
+      }
+      if(by>=oy+5 && by<=oy+25 && bx>=ox-50 && bx<=ox-45){
+        bxv=-3
+        byv=3
+      }
+
+      if(by>=oy-50 && by<=oy-45 && bx>=ox-50 && bx<=ox+25){
+        byv=-4.24
+        bxv=0
+      }
+      if(by>=oy-50 && by<=oy-45 && bx>=ox-50 && bx<=ox-30){
+        byv=-3
+        bxv=-3
+
+      }
+      if(by>=oy-50 && by<=oy-45 && bx>=ox+5 && bx<=ox+25){
+        byv=-3
+        bxv=3
+      }
+
+      if(by>=oy+20 && by<=oy+25 && bx>=ox-50 && bx<=ox+25){
+        byv=4.24
+        bxv=0
+
+      }
+      if(by>=oy+20 && by<=oy+25 && bx>=ox-50 && bx<=ox-30){
+        byv=3
+        bxv=-3
+        bxv=0
+
+      }
+      if(by>=oy+20 && by<=oy+25 && bx>=ox+5 && bx<=ox+25){
+        byv=3
+        bxv=3
+      }
+      if(by>=oy-30 && by<=oy+5 && bx>=ox+20 && bx<=ox+25){
+        bxv=4.24
+        byv=0
+      }
+      if(by>=oy-50 && by<=oy-30 && bx>=ox+20 && bx<=ox+25){
+        bxv=3
+        byv=-3
+        bxv=0
+
+      }
+      if(by>=oy+5 && by<=oy+25 && bx>=ox+20 && bx<=ox+25){
+        bxv=3
+        byv=3
+      }
+      if(by<25 && bx<475 && oy<=by+100){
+        oy+=4
+        ox-=4
+      }
+      if(by>550 && bx<475 && oy>=by-50){
+        oy-=4
+        ox-=4
+      }
+      if(bx<25 && ox<=bx+50){
+        oy-=4
+        ox+=5
+      }
+      cc.fillStyle="black"
+      cc.fillText(oscore, 250, 100)
+      cc.fillText(pscore,750,100)
+      if(bx<0){
+        pscore++
+        bx=487
+        by=287
+        bxv=-4.24
+        byv=0
+        ox=250
+        oy=300
+
+      }
+      if(bx>1000){
+        oscore++
+        bxv=4.24
+        byv=0
+        bx=487
+        by=287
+        ox=250
+        oy=300
+      }
+if(pscore==10){
+  alert('YOU WIN!')
+}
+if(oscore==10){
+  alert('YOU LOSE!')
+}
+    }
+
+    </script>
+  </body>
+</html>
