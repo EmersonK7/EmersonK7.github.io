@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Rip off Flappy Bird</title>
+    <style>
+      canvas{
+        border:#000000 1px solid
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="700" height="600">
+    </cavas>
+
+    <script>
+    var score = 0
+    var by = 300
+    var p1x = 225
+    var p1h = Math.random()*300
+    var p2h = Math.random()*300
+    var p2x = 450
+    var p3h = Math.random()*300
+    var p4h = Math.random()*300
+    var p3x = 675
+    var p5h = Math.random()*300
+    var p6h = Math.random()*300
+
+    window.onload=function() {
+      c=document.getElementById('myCanvas')
+      cc=c.getContext('2d');
+      document.addEventListener('keydown', function(event){
+        if(event.keyCode == 32){
+          by -=75
+        }
+      })
+      document.addEventListener('click', function(event){
+
+          by -=75
+
+      })
+      setInterval(update,1000/30);
+
+    }
+    function update() {
+
+      by+=5
+
+      cc.fillStyle='yellow';
+      cc.fillRect(0,0,c.width,c.height);
+      cc.fillStyle='green'
+      cc.fillRect(p1x,0,25,p1h)
+      cc.fillStyle='green'
+      cc.fillRect(p1x,c.height-p2h,25,p2h)
+      cc.fillStyle='green'
+      cc.fillRect(p2x,0,25,p3h)
+      cc.fillStyle='green'
+      cc.fillRect(p2x,c.height-p4h,25,p4h)
+      cc.fillStyle='green'
+      cc.fillRect(p3x,0,25,p5h)
+      cc.fillStyle='green'
+      cc.fillRect(p3x,c.height-p6h,25,p6h)
+      cc.fillStyle='blue'
+      cc.fillRect(150, by, 25, 25)
+      cc.fillText(score, 350,100)
+      if(by >= 580){
+        alert('Your score is ' + score)
+        score = 0
+        by = 300
+        p1x = 225
+        p1h = Math.random()*300
+        p2h = Math.random()*300
+        p2x = 450
+        p3h = Math.random()*300
+        p4h = Math.random()*300
+        p3x = 675
+        p5h = Math.random()*300
+        p6h = Math.random()*300
+      }
+      if(by >= c.height-p2h-25 && p1x <=150 && p1x>=130){
+        alert('Your score is ' + score)
+        score = 0
+        by = 300
+        p1x = 225
+        p1h = Math.random()*300
+        p2h = Math.random()*300
+        p2x = 450
+        p3h = Math.random()*300
+        p4h = Math.random()*300
+        p3x = 675
+        p5h = Math.random()*300
+        p6h = Math.random()*300
+
+      }
+      if(by >= c.height-p4h-25 && p2x <=150 && p2x>=130){
+        alert('Your score is ' + score)
+        score = 0
+        by = 300
+        p1x = 225
+        p1h = Math.random()*300
+        p2h = Math.random()*300
+        p2x = 450
+        p3h = Math.random()*300
+        p4h = Math.random()*300
+        p3x = 675
+        p5h = Math.random()*300
+        p6h = Math.random()*300
+
+      }
+      if(by >= c.height-p6h && p3x <=150 && p3x>=130){
+        alert('Your score is ' + score)
+        score = 0
+        by = 300
+        p1x = 225
+        p1h = Math.random()*300
+        p2h = Math.random()*300
+        p2x = 450
+        p3h = Math.random()*300
+        p4h = Math.random()*300
+        p3x = 675
+        p5h = Math.random()*300
+        p6h = Math.random()*300
+
+      }
+      if(by <= p1h && p1x <=150 && p1x>=130){
+        alert('Your score is ' + score)
+        score = 0
+        by = 300
+        p1x = 225
+        p1h = Math.random()*300
+        p2h = Math.random()*300
+        p2x = 450
+        p3h = Math.random()*300
+        p4h = Math.random()*300
+        p3x = 675
+        p5h = Math.random()*300
+        p6h = Math.random()*300
+
+      }
+      if(by <= p3h && p2x <=150 && p2x>=130){
+        alert('Your score is ' + score)
+        score = 0
+        by = 300
+        p1x = 225
+        p1h = Math.random()*300
+        p2h = Math.random()*300
+        p2x = 450
+        p3h = Math.random()*300
+        p4h = Math.random()*300
+        p3x = 675
+        p5h = Math.random()*300
+        p6h = Math.random()*300
+
+      }
+      if(by <= p5h && p3x <=150 && p3x>=130){
+        alert('Your score is ' + score)
+        score = 0
+        by = 300
+        p1x = 225
+        p1h = Math.random()*300
+        p2h = Math.random()*300
+        p2x = 450
+        p3h = Math.random()*300
+        p4h = Math.random()*300
+        p3x = 675
+        p5h = Math.random()*300
+        p6h = Math.random()*300
+
+      }
+      if (p1x<=0) {
+        p1x = 700
+        p1h = Math.random()*300
+        p2h = Math.random()*300
+        score +=1
+      }
+      if (p2x<=0) {
+        p2x = 700
+        p3h = Math.random()*300
+        p4h = Math.random()*300
+        score+=1
+      }
+      if (p3x<=0) {
+        p3x = 700
+        p5h = Math.random()*300
+        p6h = Math.random()*300
+        score+=1
+      }
+      if (score >= 10 && score < 20){
+        p1x -=3
+        p2x -=3
+        p3x-=3
+
+      }
+      if (score >= 0 && score < 10){
+        p1x -=2
+        p2x -=2
+        p3x-=2
+      }
+      if (score >= 20){
+        p1x -=4
+        p2x -=4
+        p3x-=4
+      }
+    }
+
+
+    </script>
+  </body>
+</html>
